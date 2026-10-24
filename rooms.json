@@ -1,0 +1,152 @@
+[
+  {
+    "name": "The Haunted Library",
+    "short": "Library",
+    "tag": "Room 01 · Decode",
+    "word": "OPEN THE SECRET BOOK",
+    "points": 5,
+    "setting": "A floating book holds an alphabet code.",
+    "story": "Every letter was moved one step FORWARD. Move each letter one step BACKWARD to read it. Example: DBU becomes CAT.",
+    "puzzle": "<div class=\"cipher\" style=\"font-size:clamp(18px,3vw,34px);letter-spacing:3px\">PQFO UIF TFDSFU CPPL</div>",
+    "hints": [
+      "PQFO means OPEN.",
+      "UIF means THE. Continue one letter backward."
+    ],
+    "solution": "PQFO → OPEN, UIF → THE, TFDSFU → SECRET, CPPL → BOOK."
+  },
+  {
+    "name": "Gallery of Ghosts",
+    "short": "Gallery",
+    "tag": "Room 02 · Chronology",
+    "word": "THE GHOSTS GUARD THE KEY",
+    "points": 5,
+    "setting": "Five portraits hide a message.",
+    "story": "Sort the portraits from the EARLIEST birth year to the LATEST and read each word in that order.",
+    "puzzle": "<table><thead><tr><th>Portrait</th><th>Birth year</th><th>Word</th></tr></thead><tbody><tr><td>Lady Willow</td><td>1888</td><td>GUARD</td></tr><tr><td>Lord Edgar</td><td>1861</td><td>THE</td></tr><tr><td>Madame Ivy</td><td>1912</td><td>KEY</td></tr><tr><td>Sir Felix</td><td>1874</td><td>GHOSTS</td></tr><tr><td>Countess Rose</td><td>1899</td><td>THE</td></tr></tbody></table>",
+    "hints": [
+      "1861 is the earliest year.",
+      "Order: 1861, 1874, 1888, 1899, 1912."
+    ],
+    "solution": "1861 THE → 1874 GHOSTS → 1888 GUARD → 1899 THE → 1912 KEY."
+  },
+  {
+    "name": "The Witch's Laboratory",
+    "short": "Laboratory",
+    "tag": "Room 03 · Ingredients",
+    "word": "MIDNIGHT MOONFLOWER ELIXIR",
+    "points": 5,
+    "setting": "Choose the only potion with the correct ingredients.",
+    "story": "A successful potion must use moonflower, silver dust and exactly three drops of midnight dew. What is its complete name?",
+    "puzzle": "<table><tr><th>Potion</th><th>Flower</th><th>Dust</th><th>Dew</th></tr><tr><td>MIDNIGHT MOONFLOWER ELIXIR</td><td>Moonflower</td><td>Silver</td><td>3</td></tr><tr><td>SHADOW ROSE TONIC</td><td>Rose</td><td>Silver</td><td>3</td></tr><tr><td>MOONLIT GOLD BREW</td><td>Moonflower</td><td>Gold</td><td>3</td></tr><tr><td>ANCIENT SILVER DRAUGHT</td><td>Moonflower</td><td>Silver</td><td>2</td></tr></table>",
+    "hints": [
+      "All three requirements must match.",
+      "Only the first potion has moonflower, silver and three drops."
+    ],
+    "solution": "MIDNIGHT MOONFLOWER ELIXIR matches every required ingredient."
+  },
+  {
+    "name": "The Cursed Clock Tower",
+    "short": "Clock Tower",
+    "tag": "Room 04 · Timeline",
+    "word": "FOLLOW THE MIDNIGHT CLOCK CHIMES",
+    "points": 5,
+    "setting": "Time reveals the next instruction.",
+    "story": "Sort fragments from earliest to latest time and read the words.",
+    "puzzle": "<table><tr><th>Time</th><th>Fragment</th></tr><tr><td>11:00</td><td>CHIMES</td></tr><tr><td>01:00</td><td>FOLLOW</td></tr><tr><td>07:00</td><td>CLOCK</td></tr><tr><td>03:00</td><td>THE</td></tr><tr><td>05:00</td><td>MIDNIGHT</td></tr></table>",
+    "hints": [
+      "01:00 comes first.",
+      "Order: 01, 03, 05, 07, 11."
+    ],
+    "solution": "FOLLOW (01), THE (03), MIDNIGHT (05), CLOCK (07), CHIMES (11)."
+  },
+  {
+    "name": "The Moonlit Conservatory",
+    "short": "Conservatory",
+    "tag": "Room 05 · First letters",
+    "word": "BEWARE THE SILENT SHADOWS",
+    "points": 5,
+    "setting": "The moonlit plants hide a warning.",
+    "story": "Read the FIRST word on each engraved garden sign, from sign 1 to sign 4.",
+    "puzzle": "<div class=\"tiles\"><div class=\"tile\"><small>Sign 1</small><strong>BEWARE</strong></div><div class=\"tile\"><small>Sign 2</small><strong>THE</strong></div><div class=\"tile\"><small>Sign 3</small><strong>SILENT</strong></div><div class=\"tile\"><small>Sign 4</small><strong>SHADOWS</strong></div></div><p class=\"smallnote\">The plaques below read: BEWARE creeping ivy · THE night flowers · SILENT river moss · SHADOWS under glass.</p>",
+    "hints": [
+      "Use the bold word on each sign.",
+      "Read signs 1 through 4 in order."
+    ],
+    "solution": "The sign words, in order, are BEWARE THE SILENT SHADOWS."
+  },
+  {
+    "name": "The Phantom Banquet",
+    "short": "Banquet",
+    "tag": "Room 06 · Missing words",
+    "word": "THE PHANTOMS ARRIVE AT MIDNIGHT",
+    "points": 5,
+    "setting": "Complete the ghostly dinner invitation.",
+    "story": "Choose the words from the word bank to complete the sentence: THE ____ ARRIVE AT ____. Type the full sentence.",
+    "puzzle": "<div class=\"cipher\" style=\"font-size:clamp(18px,2.5vw,30px);letter-spacing:1px\">THE ____ ARRIVE AT ____</div><p class=\"smallnote\">Word bank: PHANTOMS · SUNRISE · MIDNIGHT · WITCHES. The invitation says that the visitors are spirits, and that they come when the day changes.</p>",
+    "hints": [
+      "Spirits are also called phantoms.",
+      "The day changes at midnight."
+    ],
+    "solution": "The spirits are PHANTOMS, and the day changes at MIDNIGHT."
+  },
+  {
+    "name": "The Whispering Staircase",
+    "short": "Staircase",
+    "tag": "Room 07 · Backward reading",
+    "word": "FOLLOW THE CANDLELIT STAIRCASE",
+    "points": 5,
+    "setting": "The bannister speaks in reverse.",
+    "story": "The three words appear in REVERSE order. Put them back in the correct order to read the instruction.",
+    "puzzle": "<div class=\"cipher\" style=\"font-size:clamp(18px,2.8vw,30px);letter-spacing:2px\">STAIRCASE CANDLELIT THE FOLLOW</div>",
+    "hints": [
+      "Read the word order from right to left.",
+      "Begin with FOLLOW."
+    ],
+    "solution": "Reverse the word order to read FOLLOW THE CANDLELIT STAIRCASE."
+  },
+  {
+    "name": "The Dark Observatory",
+    "short": "Observatory",
+    "tag": "Room 08 · Star sequence",
+    "word": "FIND THE HIDDEN SILVER STAR",
+    "points": 5,
+    "setting": "The stars reveal a command.",
+    "story": "Read the star cards in numerical order (1 through 5).",
+    "puzzle": "<table><tr><th>Star</th><th>Word</th></tr><tr><td>4</td><td>SILVER</td></tr><tr><td>2</td><td>THE</td></tr><tr><td>5</td><td>STAR</td></tr><tr><td>1</td><td>FIND</td></tr><tr><td>3</td><td>HIDDEN</td></tr></table>",
+    "hints": [
+      "Start with star 1.",
+      "The numbers are 1, 2, 3, 4, 5."
+    ],
+    "solution": "1 FIND, 2 THE, 3 HIDDEN, 4 SILVER, 5 STAR."
+  },
+  {
+    "name": "The Keeper of Keys",
+    "short": "Key Chamber",
+    "tag": "Room 09 · Symbol ordering",
+    "word": "TAKE THE GOLDEN SKELETON KEY",
+    "points": 5,
+    "setting": "Four keys rest in the keeper’s chamber.",
+    "story": "Read the labels attached to keys ordered by size from SHORTEST to LONGEST.",
+    "puzzle": "<table><tr><th>Key length</th><th>Label</th></tr><tr><td>14 cm</td><td>SKELETON</td></tr><tr><td>6 cm</td><td>TAKE</td></tr><tr><td>18 cm</td><td>KEY</td></tr><tr><td>10 cm</td><td>THE GOLDEN</td></tr></table>",
+    "hints": [
+      "Order by the number of centimeters.",
+      "6, 10, 14, then 18 cm."
+    ],
+    "solution": "6 TAKE, 10 THE GOLDEN, 14 SKELETON, 18 KEY."
+  },
+  {
+    "name": "The Final Door",
+    "short": "Final Door",
+    "tag": "Room 10 · Final challenge",
+    "word": "OPEN THE BLACKTHORN MANOR GATES",
+    "points": 10,
+    "setting": "The mansion’s final lock requests one full command.",
+    "story": "Combine the four plaque fragments in order 1 to 4. Type the exact command to open the gates.",
+    "puzzle": "<table><tr><th>Plaque</th><th>Fragment</th></tr><tr><td>3</td><td>MANOR</td></tr><tr><td>1</td><td>OPEN THE</td></tr><tr><td>4</td><td>GATES</td></tr><tr><td>2</td><td>BLACKTHORN</td></tr></table>",
+    "hints": [
+      "Plaque 1 begins with OPEN THE.",
+      "Read 1, 2, 3, 4."
+    ],
+    "solution": "1 OPEN THE + 2 BLACKTHORN + 3 MANOR + 4 GATES."
+  }
+]
