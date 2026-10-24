@@ -39,3 +39,5 @@
 @keyframes pulseRed{50%{box-shadow:0 0 30px #ff3b3b99}}
 @keyframes pulseText{50%{opacity:.35}}
 @media(prefers-reduced-motion:reduce){.intro *{animation-duration:0s!important;animation-iteration-count:1!important}}
+
+.scareRow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;margin-top:22px;max-width:760px;animation:fadeUp 2.4s ease-out both 2s}.scareRow span{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-right:6px}.scareRow button{padding:8px 13px;font-size:14px;background:#1a0f22cc;border-color:#5a3a55}.scareRow button:hover{background:#4a1d2c;border-color:#ba646e}

@@ -27,6 +27,17 @@ export default function Home(){const [game,setGame]=useState<Game|null>(null),[r
   const ids=[setInterval(thunder,11000),setInterval(bell,6500),setInterval(creak,8300)];setTimeout(thunder,1200);setTimeout(bell,2500);
   amb.current={stop:()=>{ids.forEach(clearInterval);setFlash(false);master.gain.setTargetAtTime(0,ctx.currentTime,.15);setTimeout(()=>{nodes.forEach(n=>{try{n.stop()}catch{}});ctx.close()},600)}}}catch{}}
  function startIntro(){stopIntro();setPlaying(true);startAmbient();if(typeof window==='undefined'||!('speechSynthesis'in window))return;const id=++speechId.current;const x=new SpeechSynthesisUtterance('Welcome, brave souls, to Blackthorn Manor! Ten haunted rooms await. The first two different teams to submit correct answers will each earn five points. The final door awards ten points to each of the two qualifying teams. Only the Game Master opens the answer window and advances the rooms. Each of you must enter your own answer on your own device. When the clock begins, race to solve the mystery!');x.pitch=.6;x.rate=.82;x.onend=x.onerror=()=>{if(speechId.current===id)setTimeout(()=>{if(speechId.current===id)stopIntro()},2500)};window.speechSynthesis.speak(x)}
+ function scare(kind:string){try{const ctx=new AudioContext(),m=ctx.createGain();m.gain.value=.9;m.connect(ctx.destination);const t=ctx.currentTime;let len=3;
+  const tone=(type:OscillatorType,f0:number,f1:number,dur:number,peak:number,delay=0,dest:AudioNode=m)=>{const o=ctx.createOscillator(),g=ctx.createGain(),s=t+delay;o.type=type;o.frequency.setValueAtTime(f0,s);o.frequency.exponentialRampToValueAtTime(f1,s+dur);g.gain.setValueAtTime(.001,s);g.gain.linearRampToValueAtTime(peak,s+Math.min(.05,dur/4));g.gain.exponentialRampToValueAtTime(.001,s+dur);o.connect(g);g.connect(dest);o.start(s);o.stop(s+dur+.05)};
+  const noise=(dur:number,type:BiquadFilterType,freq:number,peak:number,q=1)=>{const b=ctx.createBuffer(1,ctx.sampleRate*dur,ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;const n=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();n.buffer=b;f.type=type;f.frequency.value=freq;f.Q.value=q;g.gain.setValueAtTime(.001,t);g.gain.linearRampToValueAtTime(peak,t+.06);g.gain.exponentialRampToValueAtTime(.001,t+dur);n.connect(f);f.connect(g);g.connect(m);n.start(t);return f};
+  if(kind==='thunder'){noise(3,'lowpass',150,.9);setFlash(true);setTimeout(()=>setFlash(false),260);setTimeout(()=>{setFlash(true);setTimeout(()=>setFlash(false),140)},380)}
+  else if(kind==='creak'){const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=700;f.connect(m);tone('sawtooth',70,140,1.6,.18,0,f);tone('sawtooth',140,95,.8,.12,.9,f);len=2.6}
+  else if(kind==='bell'){[1,2.76,5.4].forEach((k,i)=>[0,2.4].forEach(d=>tone('sine',110*k,110*k*.995,4,[.35,.15,.06][i],d)));len=7}
+  else if(kind==='scream'){const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=1500;f.Q.value=2;f.connect(m);tone('sawtooth',450,1900,1,.3,0,f);tone('square',900,2400,1,.08,0,f);len=1.5}
+  else if(kind==='heart'){for(let i=0;i<6;i++){tone('sine',75,38,.22,.6,i*.85);tone('sine',65,35,.2,.4,i*.85+.24)}len=5.5}
+  else if(kind==='whoosh'){const f=noise(2.5,'bandpass',300,.5,6);f.frequency.setValueAtTime(300,t);f.frequency.exponentialRampToValueAtTime(2500,t+1.2);f.frequency.exponentialRampToValueAtTime(300,t+2.4);len=3}
+  else{noise(.5,'lowpass',500,.9);tone('sine',70,35,.6,.9);len=1.5}
+  setTimeout(()=>ctx.close(),len*1000+500)}catch{}}
  useEffect(()=>()=>{speechId.current++;try{window.speechSynthesis?.cancel()}catch{}amb.current?.stop()},[]);
  const phase=game?.state.phase||'intro';const remaining=game?.state.expires_at?Math.max(0,Math.ceil((new Date(game.state.expires_at).getTime()-now)/1000)):game?.state.round_seconds||300;
  const clock=`${Math.floor(remaining/60).toString().padStart(2,'0')}:${(remaining%60).toString().padStart(2,'0')}`;
@@ -48,7 +59,7 @@ export default function Home(){const [game,setGame]=useState<Game|null>(null),[r
    <div className="eyebrow flick">THE CURSE OF</div>
    <h1 className="title">BLACKTHORN MANOR</h1>
    <p className="tagline">Ten haunted rooms. Three teams. No way out&hellip; unless you solve them all.</p>
-   {isHost?<div className="buttonRow introBtns"><button className={playing?'stopBtn':''} onClick={playing?stopIntro:startIntro}>{playing?'■ Stop Welcome':'▶ Play Halloween Welcome'}</button><button className="primary" disabled={busy} onClick={()=>{stopIntro();act('start')}}>Begin game</button></div>:<p className="waitIntro">The Game Master will open the doors soon&hellip;</p>}
+   {isHost?<><div className="buttonRow introBtns"><button className={playing?'stopBtn':''} onClick={playing?stopIntro:startIntro}>{playing?'■ Stop Welcome':'▶ Play Halloween Welcome'}</button><button className="primary" disabled={busy} onClick={()=>{stopIntro();act('start')}}>Begin game</button></div><div className="scareRow"><span>Scare props</span>{[['thunder','⚡ Thunder'],['creak','🚪 Creaky door'],['bell','🔔 Death bell'],['scream','😱 Scream'],['heart','💓 Heartbeat'],['whoosh','👻 Ghost whoosh'],['slam','💥 Door slam']].map(([k,l])=><button key={k} onClick={()=>scare(k)}>{l}</button>)}</div></>:<p className="waitIntro">The Game Master will open the doors soon&hellip;</p>}
    {err&&<p className="error">{err}</p>}
   </div>
  </div>;
