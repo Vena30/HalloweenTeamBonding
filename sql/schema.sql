@@ -1,6 +1,6 @@
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE TABLE IF NOT EXISTS game_state (
- id INTEGER PRIMARY KEY DEFAULT 1 CHECK (id=1), room INTEGER NOT NULL DEFAULT 0 CHECK (room BETWEEN 0 AND 9),
+ id INTEGER PRIMARY KEY DEFAULT 1 CHECK (id=1), room INTEGER NOT NULL DEFAULT 0 CHECK (room BETWEEN 0 AND 19),
  phase TEXT NOT NULL DEFAULT 'intro' CHECK (phase IN ('intro','ready','open','complete','ended')),
  opened_at TIMESTAMPTZ, expires_at TIMESTAMPTZ,
  round_seconds INTEGER NOT NULL DEFAULT 300 CHECK (round_seconds BETWEEN 30 AND 1200),
@@ -8,9 +8,9 @@ CREATE TABLE IF NOT EXISTS game_state (
 );
 INSERT INTO game_state(id) VALUES(1) ON CONFLICT DO NOTHING;
 CREATE TABLE IF NOT EXISTS players(name TEXT PRIMARY KEY, team INTEGER NOT NULL CHECK(team BETWEEN 1 AND 3),pin_hash TEXT NOT NULL);
-CREATE TABLE IF NOT EXISTS room_answers(room INTEGER PRIMARY KEY CHECK(room BETWEEN 0 AND 9), answer TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS room_answers(room INTEGER PRIMARY KEY CHECK(room BETWEEN 0 AND 19), answer TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS submissions (
- id BIGSERIAL PRIMARY KEY, room INTEGER NOT NULL CHECK(room BETWEEN 0 AND 9), name TEXT NOT NULL REFERENCES players(name),
+ id BIGSERIAL PRIMARY KEY, room INTEGER NOT NULL CHECK(room BETWEEN 0 AND 19), name TEXT NOT NULL REFERENCES players(name),
  team INTEGER NOT NULL, answer TEXT NOT NULL, correct BOOLEAN NOT NULL,
  submitted_at TIMESTAMPTZ NOT NULL DEFAULT clock_timestamp()
 );
@@ -35,7 +35,7 @@ BEGIN
  SELECT COUNT(*) INTO n FROM awards WHERE room=g.room;
  -- First correct distinct team gets a reserved slot; point award is simultaneous after second distinct team.
  IF NOT EXISTS (SELECT 1 FROM awards WHERE room=g.room AND team=p.team) THEN
-   pts:=CASE WHEN g.room=9 THEN 10 ELSE 5 END;
+   pts:=CASE WHEN g.room=19 THEN 10 ELSE 5 END;
    INSERT INTO awards(room,team,name,points,submission_id) VALUES(g.room,p.team,p.name,pts,row_id);
  END IF;
  SELECT COUNT(*) INTO n FROM awards WHERE room=g.room;
