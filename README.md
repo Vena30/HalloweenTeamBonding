@@ -9,7 +9,7 @@ A Next.js 15 multiplayer Halloween escape-room game. Built from the existing 10-
 - A server-side clock controls each room's answer window (default 5 minutes). The host can change this before opening.
 - Correctness and arrival order are determined **inside one PostgreSQL transaction** using a game-row lock. Only the first correct submission from each team counts. The first two **different** teams to answer correctly qualify and **both get 5 points** (10 each in room 10).
 - Once two teams qualify, the answer window automatically closes, but **only the host can move to the next room**.
-- On expiry the server refuses further answers. The host closes the room and advances. If fewer than two teams qualified, points are awarded only after both different teams qualify; a single reserved slot does not count in the scoreboard.
+- On expiry the server refuses further answers. The host closes the room and advances. If only one team qualified, it earns double the room's points once the host closes the room (10, or 20 in Room 20). If no team qualified, nobody scores.
 - Host can inspect live submissions, server timestamps, which team responded, hints, and the scoring board.
 
 ## First-time setup

@@ -6,7 +6,7 @@
 - Every participant joins the same website using their name + private PIN; submissions are synchronized with the host.
 - The first two **different teams** to submit the correct answer earn **5 points each**, except Room 20 (10 points each).
 - Duplicate submissions from the same team do NOT take the second slot.
-- If only one team answers correctly when time expires, no team scores that room. The host can close the room and continue.
+- If only one team answers correctly when time expires, that team earns double the room's points (10, or 20 in Room 20). The bonus appears on the scoreboard once the room is closed. The host can close the room and continue.
 - Only you advance rooms. The first two qualifying teams lock the answer window automatically.
 - Host sees all answer attempts. Players see only their own response and current team scores.
 - Team totals are calculated from rooms with two qualifying teams.
